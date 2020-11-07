@@ -3,6 +3,7 @@ import InsertaDatos
 import Editar
 import Delete
 import Mostrar
+import Exportar
 from CapturaDatos import CapturaDatos
 
 C = CapturaDatos()
@@ -15,7 +16,8 @@ def menu():
     print("\t2 - Actualizar")
     print("\t3 - Eliminar")
     print("\t4 - Mostrar")
-    print("\t5 - Salir")
+    print("\t5 - Exportar datos a un archivo TXT")
+    print("\t6 - Salir")
 
 while True:
     menu()
@@ -34,42 +36,51 @@ while True:
     elif opcionMenu == "2":
         
         print("Actualizar datos \t")
-        mostrar.Mostrar()
-        editar = Editar.Editar()
+        if mostrar.Mostrar():
+            editar = Editar.Editar()
 
-        id = int(input("¿Cual persona deseas editar?: "))
+            id = int(input("¿Cual persona deseas editar?: "))
 
-        print("¿Qué dato desea actualizar?")
-        print("\t1 - Actualizar nombe")
-        print("\t2 - Actualizar fecha")
-        print("\t3 - Actualizar calificacion")
-        opactualizar = input("Elija su opcion >> ")
+            print("¿Qué dato desea actualizar?")
+            print("\t1 - Actualizar nombe")
+            print("\t2 - Actualizar fecha")
+            print("\t3 - Actualizar calificacion")
+            opactualizar = input("Elija su opcion >> ")
 
-        if opactualizar =="1":
-            nombre = C.leeNombre("Ingrese el nuevo nombre de la persona: ")
-            editar.editaNombre(nombre, id)
-            input(".::El nombre de actulizo exitosamente::.")
+            if opactualizar =="1":
+                nombre = C.leeNombre("Ingrese el nuevo nombre de la persona: ")
+                editar.editaNombre(nombre, id)
+                input(".::El nombre de actulizo exitosamente::.")
 
-        elif opactualizar == "2":
-            fecha = C.leeFecha("Ingresa la nueva fecha: ")
-            editar.editaFecha(fecha, id)
-            input(".::La fecha se actualizo exitosamente::.")
+            elif opactualizar == "2":
+                fecha = C.leeFecha("Ingresa la nueva fecha: ")
+                editar.editaFecha(fecha, id)
+                input(".::La fecha se actualizo exitosamente::.")
 
-        elif opactualizar =="3":
-            calificacion = C.leeCalificacion("Ingresa la nueva calificacion: ")
-            editar.editaCalificacion(calificacion, id)
-            input(".::La fecha se actualizo exitosamente::.")
+            elif opactualizar =="3":
+                calificacion = C.leeCalificacion("Ingresa la nueva calificacion: ")
+                editar.editaCalificacion(calificacion, id)
+                input(".::La fecha se actualizo exitosamente::.")      
+
+        else:
+            input("\npulsa una tecla para continuar")
+                              
 
     elif opcionMenu == "3":
         
         print("Eliminar datos \t")
 
-        mostrar.Mostrar()
-        borrar = Delete.Delete()
-        id = int(input("¿Cual persona deseas eliminar?: "))
+        if mostrar.Mostrar():
+
+            borrar = Delete.Delete()
+            id = int(input("¿Cual persona deseas eliminar?: "))
+            
+            borrar.delete(id)
+            input(".::Registro eliminado exitosamente::.")
         
-        borrar.delete(id)
-        input(".::Registro eliminado exitosamente::.")
+        else:
+            input("\npulsa una tecla para continuar")
+
  
     elif opcionMenu == "4":
         
@@ -78,6 +89,10 @@ while True:
         input("\npulsa una tecla para continuar")
 
     elif opcionMenu == "5":
+        exportar = Exportar.Exportar()
+        exportar.Exportar()
+        
+    elif opcionMenu == "6":
         break
     else:
         print("")
