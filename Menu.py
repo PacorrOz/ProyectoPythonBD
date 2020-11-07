@@ -12,15 +12,25 @@ mostrar = Mostrar.Mostrar()
 
 class Menu:
 
+    def opcion1(self):
+
+        nombre = C.leeNombre("Escribe el nombre del alumno: ")
+        fecha = C.leeFecha("Ingresa la fecha en formato YYYY-MM-DD: ")
+        calificaciones = C.leeCalificacion("Ingresa la calificacion: ")
+
+        Addpersona = InsertaDatos.InsertaDatos()
+        Addpersona.Add(nombre, fecha, calificaciones)
+        input(".::Registro agregado exitosamente::.")
+
     def opcion2(self):
 
         print("Actualizar datos \t")
         if mostrar.Mostrar():
+
             editar = Editar.Editar()
             id = int(input("¿Cual persona deseas editar?: "))
             
             if editar.validaID(id):
-
                 while True:
 
                     print("¿Qué dato desea actualizar?")
@@ -47,6 +57,7 @@ class Menu:
 
                     elif opactualizar =="4"   :
                         break
+
                     else:
                         print("")
                         input("No has pulsado ninguna opcion correcta...\npulsa una tecla para continuar")
@@ -55,15 +66,6 @@ class Menu:
                 input("\n pulsa una tecla para continuar")
         else:
             input("\npulsa una tecla para continuar")
-
-    def opcion1(self):
-        nombre = C.leeNombre("Escribe el nombre del alumno: ")
-        fecha = C.leeFecha("Ingresa la fecha en formato YYYY-MM-DD: ")
-        calificaciones = C.leeCalificacion("Ingresa la calificacion: ")
-
-        Addpersona = InsertaDatos.InsertaDatos()
-        Addpersona.Add(nombre, fecha, calificaciones)
-        input(".::Registro agregado exitosamente::.")
     
     def opcion3(self):
                 
@@ -89,7 +91,6 @@ class Menu:
     def opcion5(self):
         exportar = Exportar.Exportar()
         exportar.Exportar()
-
 
     def main(self):
         while True:
