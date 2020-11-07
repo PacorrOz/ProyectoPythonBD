@@ -1,6 +1,17 @@
 from Conexion import Conexion
 
 class Editar:
+
+    def validaID(self, id):
+
+        query = 'select * from Alumno where idAlumno=%s'
+        Conexion.mycursor.execute(query, (id,))
+
+        if Conexion.mycursor.rowcount < 1:
+            print(".::No se encontro ese ID::.")
+            return False
+        else:
+            return True
     
     def editaNombre(self, nombre, id):
         

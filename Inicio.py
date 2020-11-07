@@ -40,28 +40,29 @@ while True:
             editar = Editar.Editar()
 
             id = int(input("¿Cual persona deseas editar?: "))
+            if editar.validaID(id):
+                print("¿Qué dato desea actualizar?")
+                print("\t1 - Actualizar nombe")
+                print("\t2 - Actualizar fecha")
+                print("\t3 - Actualizar calificacion")
+                opactualizar = input("Elija su opcion >> ")
 
-            print("¿Qué dato desea actualizar?")
-            print("\t1 - Actualizar nombe")
-            print("\t2 - Actualizar fecha")
-            print("\t3 - Actualizar calificacion")
-            opactualizar = input("Elija su opcion >> ")
+                if opactualizar =="1":
+                    nombre = C.leeNombre("Ingrese el nuevo nombre de la persona: ")
+                    editar.editaNombre(nombre, id)
+                    input(".::El nombre de actulizo exitosamente::.")
 
-            if opactualizar =="1":
-                nombre = C.leeNombre("Ingrese el nuevo nombre de la persona: ")
-                editar.editaNombre(nombre, id)
-                input(".::El nombre de actulizo exitosamente::.")
+                elif opactualizar == "2":
+                    fecha = C.leeFecha("Ingresa la nueva fecha: ")
+                    editar.editaFecha(fecha, id)
+                    input(".::La fecha se actualizo exitosamente::.")
 
-            elif opactualizar == "2":
-                fecha = C.leeFecha("Ingresa la nueva fecha: ")
-                editar.editaFecha(fecha, id)
-                input(".::La fecha se actualizo exitosamente::.")
-
-            elif opactualizar =="3":
-                calificacion = C.leeCalificacion("Ingresa la nueva calificacion: ")
-                editar.editaCalificacion(calificacion, id)
-                input(".::La fecha se actualizo exitosamente::.")      
-
+                elif opactualizar =="3":
+                    calificacion = C.leeCalificacion("Ingresa la nueva calificacion: ")
+                    editar.editaCalificacion(calificacion, id)
+                    input(".::La fecha se actualizo exitosamente::.")      
+            else:
+                input("\n pulsa una tecla para continuar")
         else:
             input("\npulsa una tecla para continuar")
                               
@@ -74,13 +75,13 @@ while True:
 
             borrar = Delete.Delete()
             id = int(input("¿Cual persona deseas eliminar?: "))
-            
-            borrar.delete(id)
-            input(".::Registro eliminado exitosamente::.")
-        
+            if borrar.validaID(id):
+                borrar.delete(id)
+                input(".::Registro eliminado exitosamente::.")
+            else:
+                input("\npulsa una tecla para continuar")
         else:
             input("\npulsa una tecla para continuar")
-
  
     elif opcionMenu == "4":
         
