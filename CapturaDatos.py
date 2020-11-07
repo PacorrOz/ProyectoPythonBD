@@ -18,6 +18,19 @@ class CapturaDatos:
             except ValueError:
                 print('Error :: El valor ingresado no corresponde a un número.')
         return calificacion
+    @staticmethod
+    def leeEntero(message):
+        entero = 0
+        while True:
+            try:
+                entero = int(input(message))
+                if entero < 0:
+                    print('Error :: El número ingresado no debe ser negativo.')
+                    continue
+                break
+            except ValueError:
+                print('Error :: El valor ingresado no corresponde a un número.')
+        return entero
 
     @staticmethod
     def leeNombre(message):

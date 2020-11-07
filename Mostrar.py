@@ -11,10 +11,9 @@ class Mostrar:
         if Conexion.mycursor.rowcount < 1:
             print(".::No hay registros para mostrar::.")
             return False
-        else:
 
+        else:
             tabla = from_db_cursor(Conexion.mycursor)
-            #for row in Conexion.mycursor:
             print(tabla.get_string())
             return True
 """ 

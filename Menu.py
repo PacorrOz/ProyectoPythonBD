@@ -28,7 +28,7 @@ class Menu:
         if mostrar.Mostrar():
 
             editar = Editar.Editar()
-            id = int(input("¿Cual persona deseas editar?: "))
+            id = C.leeEntero("¿Cual persona deseas editar?: ")
             
             if editar.validaID(id):
                 while True:
@@ -74,7 +74,7 @@ class Menu:
         if mostrar.Mostrar():
 
             borrar = Delete.Delete()
-            id = int(input("¿Cual persona deseas eliminar?: "))
+            id = C.leeEntero("¿Cual persona deseas eliminar?: ")
             if borrar.validaID(id):
                 borrar.delete(id)
                 input(".::Registro eliminado exitosamente::.")
